@@ -45,10 +45,10 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 0
-    - _Multi: 6.8
+    - _Multi: 9.8
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Seed_Control: 110.2
+    - _Seed_Control: 54.7
     - _SrcBlend: 1
     - _Surface: 0
     - _ZTest: 4
