@@ -19,6 +19,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask playerLayer;
 
     [Header("Settings Camera")]
     [SerializeField] private float runningFovAmount = 5f;
@@ -31,6 +32,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private float runningSpeed = 3.5f;
     [SerializeField] private float jumpHeight = 1f;
     [SerializeField] private float groundCheckRadius = 0.4f;
+    [SerializeField] private float landingCheckDistance = 4f;
     [SerializeField, Range(0f, 0.3f)] float rotationSmoothTime = 0.1f;
     private float rotationSmoothVelocity;
     private float jumpCooldown = 1f;
@@ -52,7 +54,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         get
         {
-            return IsGrounded == false && velocity.y < -3f;
+            return IsGrounded == false && velocity.y < -3f && IsLanding == false;
         }
     }
     public bool IsLanding { get; private set; }
@@ -189,7 +191,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private void CheckLanding()
     {
-        if (Physics.SphereCast(transform.position, characterController.radius, -transform.up, out RaycastHit hit, characterController.height * 2))
+        if (Physics.SphereCast(transform.position - Vector3.up, characterController.radius, -transform.up, out RaycastHit hit, characterController.height * landingCheckDistance))
         {
             IsLanding = true;
         }
