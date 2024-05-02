@@ -1,0 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
+public class ColorManager : MonoBehaviour
+{
+    public static ColorManager Instance;
+    public event EventHandler OnColorsAchieved;
+    [SerializeField] VolumeProfile volumeProfile;
+    private ColorAdjustments colorAdjustment;
+    private int colorAddValue = 50;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            Destroy(gameObject);
+    }
+    private void Start()
+    {
+        volumeProfile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjustments);
+        this.colorAdjustment = colorAdjustments;
+    }
+
+    public void AddColor()
+    {
+        colorAdjustment.saturation.value += colorAddValue;
+        if (colorAdjustment.saturation.value >= 100)
+        {
+            OnColorsAchieved?.Invoke(this, EventArgs.Empty);
+            Debug.Log("All Colors Achieved");
+        }
+    }
+}

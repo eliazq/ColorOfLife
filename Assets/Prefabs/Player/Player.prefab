@@ -40,10 +40,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8332022913662918875}
+  - component: {fileID: 3333194646574688649}
   - component: {fileID: 3196688226690579222}
   - component: {fileID: 1737687244797654903}
-  - component: {fileID: 3333194646574688649}
-  m_Layer: 0
+  - component: {fileID: 1797181789003303080}
+  - component: {fileID: 66594390293249311}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,6 +70,19 @@ Transform:
   - {fileID: 7299734813239675688}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3333194646574688649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301045672393802968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1816795d2838f643acc6f6f815cfff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flattenFolder: 0
 --- !u!143 &3196688226690579222
 CharacterController:
   m_ObjectHideFlags: 0
@@ -118,9 +133,10 @@ MonoBehaviour:
   runningSpeed: 3.5
   jumpHeight: 1
   groundCheckRadius: 0.4
+  landingCheckDistance: 4
   rotationSmoothTime: 0.1
   gravity: -9.81
---- !u!114 &3333194646574688649
+--- !u!114 &1797181789003303080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,10 +145,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5301045672393802968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1816795d2838f643acc6f6f815cfff9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ca09822a2c679c4fba1b1067d1e0bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flattenFolder: 0
+--- !u!114 &66594390293249311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301045672393802968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006f2b072414bfc49bf19dd839dd2796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerGameObject: {fileID: 0}
+  playerInteract: {fileID: 1797181789003303080}
+  interactTextMeshProUGUI: {fileID: 0}
 --- !u!1 &7470281049420307169
 GameObject:
   m_ObjectHideFlags: 0
