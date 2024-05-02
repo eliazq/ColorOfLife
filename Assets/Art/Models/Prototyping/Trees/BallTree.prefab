@@ -841,7 +841,6 @@ GameObject:
   - component: {fileID: 7319777357024437126}
   - component: {fileID: 3690132899798887227}
   - component: {fileID: 1479865779601544447}
-  - component: {fileID: 5310045687136581408}
   m_Layer: 0
   m_Name: BallTree
   m_TagString: Untagged
@@ -916,26 +915,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.69
+  m_Radius: 0.5
   m_Center: {x: -0.22, y: 0.02, z: 0}
---- !u!135 &5310045687136581408
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047414357204720673}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.99
-  m_Center: {x: 0, y: 3.8, z: -0.62}

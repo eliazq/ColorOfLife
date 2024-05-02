@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4862633885452701330}
   - component: {fileID: 5820618037039641063}
   - component: {fileID: 1819480064392184286}
-  - component: {fileID: 7299103573930754240}
   m_Layer: 0
   m_Name: DeadTree
   m_TagString: Untagged
@@ -31,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 35.86539, y: 35.86539, z: 35.8654}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5130866322625806036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5820618037039641063
@@ -84,13 +84,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7299103573930754240
-MeshCollider:
+--- !u!1 &7494530929791873505
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761324025250485399}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5130866322625806036}
+  - component: {fileID: 6596092265710597490}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5130866322625806036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494530929791873505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.2092087, y: -0.12711835, z: 0.031910323, w: 0.9690482}
+  m_LocalPosition: {x: -0.0037, y: 0.0106, z: 0.0171}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4862633885452701330}
+  m_LocalEulerAnglesHint: {x: -23.413, y: -16.441, z: 7.201}
+--- !u!136 &6596092265710597490
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494530929791873505}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -102,7 +134,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -297142525791743449, guid: cd3459f9392a1444094cdb08a67972db, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Height: 0.06
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
