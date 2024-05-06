@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -32,7 +30,12 @@ public class ColorManager : MonoBehaviour
         if (colorAdjustment.saturation.value >= 100)
         {
             OnColorsAchieved?.Invoke(this, EventArgs.Empty);
-            Debug.Log("All Colors Achieved");
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        colorAdjustment.saturation.value = 0;
+    }
+    
 }
