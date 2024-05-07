@@ -21,13 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Glass
-  m_Shader: {fileID: -6465566751694194690, guid: 3bb35f7f86ffc45c2aa6fc4291f787fc,
-    type: 3}
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _SHADING_STYLE_SKIN_AND_TEXTILES
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -43,6 +42,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -65,7 +68,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AdditionalLightCutoffPoint: 0.8
-    - _ExtraBandThickness: 0.3
+    - _ExtraBandThickness: 1
     - _PaintbrushStrokesAngle: 40
     - _PaintbrushStrokesSize: 1
     - _QueueControl: -1
@@ -73,12 +76,13 @@ Material:
     - _SHADING_STYLE: 0
     - _ShadowsFloor: 0.25
     - _Smoothness: 0.4
-    - _SpecularNoiseSize: 1
+    - _SpecularNoiseSize: 7.8
     - _StrongRimStrength: 1
     - _ToonCutoffPoint: 0.2
     - _UseEmission: 0
     m_Colors:
     - _BaseColor: {r: 0.066082224, g: 0.9339623, b: 0.9160442, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
