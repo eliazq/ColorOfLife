@@ -59,4 +59,4 @@ public class HeadBob : MonoBehaviour
             cameraTransform.localPosition = initialCameraPosition;
         }
     }
-}s
+}
