@@ -81,7 +81,7 @@ namespace Invector.vCharacterController
             }
         }
         internal int jumpCount;
-        internal int maxJumps = 1;
+        internal int maxJumps = 2;
         internal bool isGrounded { get; set; }
         internal bool isSprinting { get; set; }
         public bool stopMove { get; protected set; }
@@ -296,8 +296,10 @@ namespace Invector.vCharacterController
 
             if (groundDistance <= groundMinDistance)
             {
+                if (isGrounded == false)
+                    jumpCount = 0;
                 isGrounded = true;
-                jumpCount = 0;
+                
                 if (!isJumping && groundDistance > 0.05f)
                     _rigidbody.AddForce(transform.up * (extraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
 

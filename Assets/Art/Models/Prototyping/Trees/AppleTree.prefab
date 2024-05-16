@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2291072776643683690}
   - component: {fileID: 4156238516066914469}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AppleTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,10 +129,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 94f2f161123459b4aafa5c6d6838f054,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cef6a96a0a61ef04bbb6df2ddd3380c7, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 94f2f161123459b4aafa5c6d6838f054,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 766ab959aad146b4f8b7d39223320e04, type: 2}
     - target: {fileID: 919132149155446097, guid: 94f2f161123459b4aafa5c6d6838f054,
         type: 3}
       propertyPath: m_Name
       value: Apple tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 94f2f161123459b4aafa5c6d6838f054,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
