@@ -53,23 +53,23 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Camera_Depth_Fade_Offset: 1
-    - _Camera_Depth_Fade_Range: 1
+    - _Camera_Depth_Fade_Offset: 10
+    - _Camera_Depth_Fade_Range: 10
     - _Combined_Noise_Remap: 0.045
     - _Noise_Remap: 0.244
     - _Power: 0.81
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Simple_Noise_Amount: 0.924
+    - _Simple_Noise_Amount: 0.36
     - _Simple_Noise_Scale: 10
-    - _Simple_Remap: 0.232
-    - _Surface_Depth_Fade: 40
+    - _Simple_Remap: 0
+    - _Surface_Depth_Fade: 67.34
     - _Use_As_Fog_Particle: 0
     - _Voronoi_Noise_Amount: 0.641
     - _Voronoi_Noise_Scale: 1.85
     - _Voronoi_Remap: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9433962, g: 0.9211463, b: 0.9211463, a: 1}
     - _Simple_Noise_Time_Scale: {r: 0, g: -0.4, b: 0, a: 0}
     - _Voronoi_Noise_Time_Scale: {r: -0.3, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
