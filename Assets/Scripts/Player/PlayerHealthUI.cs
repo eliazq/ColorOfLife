@@ -6,11 +6,21 @@ using UnityEngine.UI;
 public class PlayerHealthUI : MonoBehaviour
 {
     [SerializeField] private Image healthBarImage; // 0.625 max fill amount
+    [SerializeField] private Image iconImage;
+    [SerializeField] private Sprite deadIcon;
+    private Sprite iconSprite;
     private float maxFillAmount = 0.625f;
 
     private void Start()
     {
+        iconSprite = iconImage.sprite;
         Player.Instance.OnDamageTaken += Instance_OnDamageTaken;
+        Player.Instance.OnDead += Instance_OnDead;
+    }
+
+    private void Instance_OnDead(object sender, System.EventArgs e)
+    {
+        iconImage.sprite = deadIcon;
     }
 
     private void Instance_OnDamageTaken(object sender, System.EventArgs e)
