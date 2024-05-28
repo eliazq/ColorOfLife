@@ -7,6 +7,7 @@ public class FallingPlatform : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private float touchForce = 300f;
     [SerializeField] private float lifeLenghtAfterTouch = 8f;
+    [SerializeField] private ForceMode forceMode = ForceMode.Impulse;
     bool hasFell = false;
     private void Start()
     {
@@ -20,7 +21,7 @@ public class FallingPlatform : MonoBehaviour
         {
             hasFell = true;
             rb.isKinematic = false;
-            rb.AddForce(Vector3.down * touchForce);
+            rb.AddForce(Vector3.down * touchForce, forceMode);
             Destroy(gameObject, lifeLenghtAfterTouch);
         }
     }
