@@ -51,12 +51,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CloudDensity: 1.6
-    - _Cloud_Constrast: 1.15
+    - _CloudDensity: 1.7
+    - _Cloud_Constrast: 1.1
     - _Cloud_Density: 1.2
     - _Cloud_Distort_Size: 0
     - _Cloud_Noise: 77.2
-    - _Cloud_Size: 250
+    - _Cloud_Size: 138.88
     - _Cloud_Speed: 0
     - _QueueControl: 0
     - _QueueOffset: 0
