@@ -123,15 +123,15 @@ Material:
     - _GradientPower1: 4.57
     - _OREEMISSIONONOFF: 1
     - _OreEmissionIntensity: 7.23
-    - _PaintbrushStrokesAngle: 40
-    - _PaintbrushStrokesSize: 1
+    - _PaintbrushStrokesAngle: 360
+    - _PaintbrushStrokesSize: 10
     - _QueueControl: -1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SHADING_STYLE: 0
     - _SNOWONOFF: 0
     - _ShadowsFloor: 0.25
-    - _Smoothness: 0.321
+    - _Smoothness: 0
     - _SnowAmount: 0.215
     - _SnowCoverage: 0.23
     - _SnowFade: 0.736
