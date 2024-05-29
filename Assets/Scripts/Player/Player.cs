@@ -1,3 +1,4 @@
+using Invector.vCharacterController;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,10 +8,18 @@ public class Player : MonoBehaviour, IDamageable
 {
     public static Player Instance;
 
+    #region InspectorVariables
     public int health { get; private set; }
     public int maxHealth { get; private set; } = 100;
+    [SerializeField] private float outOfBoundsY = -50f;
+    #endregion
+
+    #region Events
     public event EventHandler OnDead;
     public event EventHandler OnDamageTaken;
+    #endregion
+
+    Vector3 spawnPosition;
 
     private void Awake()
     {
@@ -22,9 +31,22 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         health = maxHealth;
+        spawnPosition = transform.position + Vector3.up;
     }
 
-    
+    private void Update()
+    {
+        CheckOutOfBounds();
+    }
+
+    private void CheckOutOfBounds()
+    {
+        if (transform.position.y < outOfBoundsY)
+        {
+            transform.position = spawnPosition;
+        }
+    }
+
     public void Damage(int damage)
     {
         health -= damage;
