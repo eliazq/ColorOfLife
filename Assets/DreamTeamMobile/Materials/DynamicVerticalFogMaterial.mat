@@ -46,8 +46,8 @@ Material:
     m_Ints: []
     m_Floats:
     - FogDensity: 0.83
-    - FogNoise: 141.56
-    - FogSpeed: 0.01
+    - FogNoise: -17.27
+    - FogSpeed: 0.005
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
