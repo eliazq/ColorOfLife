@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8334320180639281614}
   - component: {fileID: 8326752322570069262}
+  - component: {fileID: 5898664052515386149}
   m_Layer: 0
   m_Name: MainGameTools
   m_TagString: Untagged
@@ -45,3 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundAudioClipsSO: {fileID: 11400000, guid: 24079010eb7b6ba49ae6b41cc99a1bf0, type: 2}
+--- !u!114 &5898664052515386149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638584879350103756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7106af21f4a8b54ab00b7d66325065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: 752c4ffb62b2de746b103f0d8eb2b837, type: 2}
