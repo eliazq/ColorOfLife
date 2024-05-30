@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 4aa9640e0b5fac74db51ccae55052f90, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3feef6e0e0e55084096fad1f05d1f874, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1745834380}
-  m_IndirectSpecularColor: {r: 0.08275992, g: 0.036200278, b: 0.13373436, a: 1}
+  m_IndirectSpecularColor: {r: 0.24660823, g: 0.14057517, b: 0.37934077, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13052,13 +13052,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745834378}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.8633956, y: 0, z: 0, w: 0.5045276}
+  m_LocalRotation: {x: -0.6955237, y: 0.14504288, z: -0.68827814, w: -0.14656976}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -119.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -203.8, y: -89.4, z: 0}
 --- !u!1001 &1771096275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15249,7 +15249,7 @@ GameObject:
   - component: {fileID: 2030531402}
   - component: {fileID: 2030531401}
   - component: {fileID: 2030531400}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15298,7 +15298,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6703df15935143840a805925b625823e, type: 2}
+  - {fileID: 2100000, guid: 383350809ebe1f642a18c24cc7c02b7d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

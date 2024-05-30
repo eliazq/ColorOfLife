@@ -19980,7 +19980,7 @@ PrefabInstance:
     - target: {fileID: 3065454194088909567, guid: ddc9280243f31dd468714f665d1b781e,
         type: 3}
       propertyPath: m_Name
-      value: DROP PLATFORM (1)
+      value: Platfrom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22884,7 +22884,7 @@ PrefabInstance:
     - target: {fileID: 3065454194088909567, guid: ddc9280243f31dd468714f665d1b781e,
         type: 3}
       propertyPath: m_Name
-      value: DROP PLATFORM (2)
+      value: Platfrom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43735,7 +43735,7 @@ PrefabInstance:
     - target: {fileID: 3065454194088909567, guid: ddc9280243f31dd468714f665d1b781e,
         type: 3}
       propertyPath: m_Name
-      value: DROP PLATFORM
+      value: Platfrom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
