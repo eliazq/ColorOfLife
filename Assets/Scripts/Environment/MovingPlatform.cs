@@ -65,4 +65,34 @@ public class MovingPlatform : MonoBehaviour
             }
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.grey;
+        if (pointsParent != null)
+        {
+            Gizmos.color = Color.red;
+
+            // Get all child transforms of pointsParent and store their local positions in the points array
+            Vector3[] gizmoPoints = new Vector3[pointsParent.childCount];
+            for (int i = 0; i < pointsParent.childCount; i++)
+            {
+                gizmoPoints[i] = pointsParent.GetChild(i).position;
+            }
+
+            // Draw spheres at each point
+            for (int i = 0; i < gizmoPoints.Length; i++)
+            {
+                Gizmos.DrawSphere(gizmoPoints[i], 0.2f);
+            }
+
+            // Draw lines between the points
+            for (int i = 0; i < gizmoPoints.Length; i++)
+            {
+                Vector3 startPosition = gizmoPoints[i];
+                Vector3 endPosition = gizmoPoints[(i + 1) % gizmoPoints.Length];
+                Gizmos.DrawLine(startPosition, endPosition);
+            }
+        }
+    }
 }
