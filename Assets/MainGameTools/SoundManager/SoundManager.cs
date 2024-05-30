@@ -79,13 +79,13 @@ public class SoundManager : MonoBehaviour
 
     public static void PlaySound(Sound sound, Vector3 position)
     {
-        Debug.Log($"Attempting to play sound: {sound} at position: {position}");
+        // Debug.Log($"Attempting to play sound: {sound} at position: {position}");
         if (CanPlaySound(sound))
         {
             AudioClip audioClip = GetAudioClip(sound);
             if (audioClip != null)
             {
-                Debug.Log($"Playing sound: {sound} at position: {position}");
+                // Debug.Log($"Playing sound: {sound} at position: {position}");
                 AudioSource.PlayClipAtPoint(audioClip, position, 1f);
             }
             else
@@ -95,13 +95,13 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
+            // Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
         }
     }
 
     public static void PlaySound(Sound sound)
     {
-        Debug.Log($"Attempting to play sound: {sound} as one-shot");
+        // Debug.Log($"Attempting to play sound: {sound} as one-shot");
         if (CanPlaySound(sound))
         {
             if (oneShotGameObject == null)
@@ -113,7 +113,7 @@ public class SoundManager : MonoBehaviour
             AudioClip audioClip = GetAudioClip(sound);
             if (audioClip != null)
             {
-                Debug.Log($"Playing sound: {sound} as one-shot");
+                // Debug.Log($"Playing sound: {sound} as one-shot");
                 oneShotAudioSource.PlayOneShot(audioClip);
             }
             else
@@ -123,12 +123,12 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
+            // Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
         }
     }
     public static void PlaySound(Sound sound, float volume)
     {
-        Debug.Log($"Attempting to play sound: {sound} as one-shot");
+        // Debug.Log($"Attempting to play sound: {sound} as one-shot");
         if (CanPlaySound(sound))
         {
             if (oneShotGameObject == null)
@@ -141,7 +141,7 @@ public class SoundManager : MonoBehaviour
             AudioClip audioClip = GetAudioClip(sound);
             if (audioClip != null)
             {
-                Debug.Log($"Playing sound: {sound} as one-shot");
+                // Debug.Log($"Playing sound: {sound} as one-shot");
                 oneShotAudioSource.PlayOneShot(audioClip);
             }
             else
@@ -151,7 +151,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
+            // Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
         }
     }
 
@@ -167,23 +167,23 @@ public class SoundManager : MonoBehaviour
             float lastTimePlayed = soundTimerDictionary[sound];
             float cooldownTime = 0.15f; // Adjust this value as needed
             float timeSinceLastPlayed = Time.time - lastTimePlayed;
-            Debug.Log($"Time since last played {sound}: {timeSinceLastPlayed}s, Cooldown time: {cooldownTime}s");
+            // Debug.Log($"Time since last played {sound}: {timeSinceLastPlayed}s, Cooldown time: {cooldownTime}s");
 
             if (timeSinceLastPlayed >= cooldownTime)
             {
                 soundTimerDictionary[sound] = Time.time;
-                Debug.Log($"Sound {sound} can be played. Updating last played time.");
+                // Debug.Log($"Sound {sound} can be played. Updating last played time.");
                 return true;
             }
             else
             {
-                Debug.Log($"Sound {sound} cannot be played. Cooldown active.");
+                // Debug.Log($"Sound {sound} cannot be played. Cooldown active.");
                 return false;
             }
         }
         else
         {
-            Debug.Log($"Sound {sound} not found in dictionary. Adding to dictionary and allowing play.");
+            // Debug.Log($"Sound {sound} not found in dictionary. Adding to dictionary and allowing play.");
             soundTimerDictionary[sound] = Time.time;
             return true;
         }
