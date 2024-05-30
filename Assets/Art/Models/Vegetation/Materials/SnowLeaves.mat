@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PT_Poppy_mat
-  m_Shader: {fileID: 4800000, guid: 69e2e8c890f00e04e945ccd10e764372, type: 3}
+  m_Name: SnowLeaves
+  m_Shader: {fileID: 4800000, guid: 77e1a76a38ecd5a46a270afb12894dd5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -17,7 +17,6 @@ Material:
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _CUSTOMCOLORSTINTING_ON
-  - _CUSTOMFLOWERSCOLOR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -28,8 +27,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BASETEXTURE:
-        m_Texture: {fileID: 2800000, guid: e0eab39b8993b684dbb9800cf1151d33, type: 3}
+    - _BaseTexture:
+        m_Texture: {fileID: 2800000, guid: d2f321fff7f05aa49ad106541e997dd3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -53,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e0eab39b8993b684dbb9800cf1151d33, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -89,7 +88,6 @@ Material:
     - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _CUSTOMCOLORSTINTING: 1
-    - _CUSTOMFLOWERSCOLOR: 1
     - _CUSTOMWIND: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -98,8 +96,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Gradient: 0.914
-    - _GradientPower1: 0.66
+    - _Gradient: 0.123
+    - _GradientPower: 1.74
     - _LeavesThickness: 0.5
     - _MaskClipValue: 0.5
     - _Metallic: 0
@@ -109,28 +107,33 @@ Material:
     - _QueueControl: -1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SNOWONOFF: 0
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
+    - _SnowAmount: 1
+    - _SnowCoverage: 0.45
+    - _SnowGradient: 0.83
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TRANSLUCENCYONOFF: 1
-    - _TransAmbient: 0.2
+    - _TransAmbient: 0.7
     - _TransDirect: 1
     - _TransNormal: 0.5
     - _TransNormalDistortion: 0.1
     - _TransScattering: 2
     - _TransShadow: 0.9
     - _TransStrength: 1
-    - _Translucency: 1
+    - _Translucency: 10
     - _UVSec: 0
-    - _WindDensity: 0.2
-    - _WindMovement: 0.088
-    - _WindStrength: 0.111
+    - _WINDMASKONOFF: 0
+    - _WindDensity: 2
+    - _WindMovement: 0.3
+    - _WindStrength: 0.3
     - _ZWrite: 0
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FLOWERSCOLOR: {r: 3.9999995, g: 0, b: 2.234306, a: 0}
-    - _GroundColor: {r: 0.12978768, g: 0.49056602, b: 0.09487361, a: 1}
-    - _TopColor: {r: 0.3505436, g: 0.5754717, b: 0.3338822, a: 1}
+    - _GroundColor: {r: 0.9056604, g: 0.8757565, b: 0.8757565, a: 1}
+    - _TopColor: {r: 0.5764706, g: 0.03921568, b: 0.39461315, a: 1}
   m_BuildTextureStacks: []
