@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,10 @@ public class FallingPlatform : MonoBehaviour
     [SerializeField] private ForceMode forceMode = ForceMode.Impulse;
     [SerializeField] private float movingBackTime = 4f;
     bool hasFell = false;
+    bool isReseting = false;
     private Vector3 startPosition;
+    public event EventHandler OnPlatformFall;
+    public event EventHandler OnPlatformReset;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,12 +24,13 @@ public class FallingPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Player player) && !hasFell)
+        if (collision.collider.TryGetComponent(out Player player) && !hasFell && !isReseting)
         {
             hasFell = true;
             rb.isKinematic = false;
             rb.AddForce(Vector3.down * touchForce, forceMode);
             StartCoroutine(ResetPlatformAfterTime(lifeLenghtAfterTouch));
+            OnPlatformFall?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -35,13 +40,16 @@ public class FallingPlatform : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.isKinematic = true;
         hasFell = false;
-
-        while (transform.position != startPosition)
+        isReseting = true;
+        Vector3.Distance(transform.position, startPosition);
+        while (Vector3.Distance(transform.position, startPosition) > 0.1f)
         {
             transform.position = Vector3.Lerp(transform.position, startPosition, Time.deltaTime * movingBackTime);
             yield return null;
         }
+        isReseting = false;
         transform.position = startPosition;
+        OnPlatformReset?.Invoke(this, EventArgs.Empty);
     }
 
 }
