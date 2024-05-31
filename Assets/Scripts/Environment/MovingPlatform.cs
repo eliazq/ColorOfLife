@@ -1,3 +1,4 @@
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,15 @@ public class MovingPlatform : MonoBehaviour
     private Vector3[] points;  // Array of points to move between
     private int currentPointIndex = 0;  // Index of the current target point
 
-    public bool isMoving { get; set; } = true;
+    Rigidbody rb;
 
+    public bool isMoving { get; set; } = true;
+    bool isPlayerOn = false;
+    Player player;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         // Ensure pointsParent is assigned
         if (pointsParent != null)
         {
@@ -54,7 +59,7 @@ public class MovingPlatform : MonoBehaviour
         {
             // Move the platform towards the current target point in world space
             Vector3 targetPosition = points[currentPointIndex];
-            
+
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
             // Check if the platform has reached the target point
@@ -63,6 +68,32 @@ public class MovingPlatform : MonoBehaviour
                 // Increment the point index and loop back to the start if necessary
                 currentPointIndex = (currentPointIndex + 1) % points.Length;
             }
+
+            if (isPlayerOn)
+            {
+                player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<Player>() != null)
+        {
+            isPlayerOn = true;
+            if (player == null)
+                player = collision.collider.GetComponent<Player>();
+            player.GetComponent<vThirdPersonController>().enabled = false;
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.GetComponent<Player>() != null)
+        {
+            isPlayerOn = false;
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 
