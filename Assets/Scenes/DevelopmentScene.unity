@@ -1207,6 +1207,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95ce9c3ebdbb0ee4ca856d4b0c5227e8, type: 3}
+--- !u!114 &733058097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8985489092022199892, guid: 8893ed71d0b1a984ba856f647fc6e9e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6161571494561423467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fbf3aa05f6be24780438449f505aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &793715647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,7 +2496,7 @@ PrefabInstance:
     - target: {fileID: 1222314609358290154, guid: 8893ed71d0b1a984ba856f647fc6e9e9,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1222314609358290154, guid: 8893ed71d0b1a984ba856f647fc6e9e9,
         type: 3}
@@ -2506,6 +2518,11 @@ PrefabInstance:
       propertyPath: minFallDamageVelocity
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 1222314609358290154, guid: 8893ed71d0b1a984ba856f647fc6e9e9,
+        type: 3}
+      propertyPath: playerControllerMotor
+      value: 
+      objectReference: {fileID: 733058097}
     - target: {fileID: 1222314609358290154, guid: 8893ed71d0b1a984ba856f647fc6e9e9,
         type: 3}
       propertyPath: normalFallDamageVelocity
