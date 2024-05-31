@@ -12,8 +12,17 @@ public class Player : MonoBehaviour, IDamageable
     public int health { get; private set; }
     public int maxHealth { get; private set; } = 100;
     [SerializeField] private vThirdPersonCamera thirdPersonCamera;
+    private vThirdPersonController thirdPersonController;
+    [SerializeField] private vThirdPersonMotor playerControllerMotor;
     [SerializeField] private float outOfBoundsY = -50f;
     [SerializeField] private float cameraOutOfBoundsY = -5f;
+    [SerializeField] private float minFallDamageVelocity = -50;
+    [SerializeField] private float normalFallDamageVelocity = -100;
+    [SerializeField] private float maxFallDamageVelocity = -200;
+    private int minFallDamage = 25;
+    private int normalFallDamage = 55;
+    private int maxFallDamage = 100;
+    Rigidbody rb;
     #endregion
 
     #region Events
@@ -34,6 +43,15 @@ public class Player : MonoBehaviour, IDamageable
     {
         health = maxHealth;
         spawnPosition = transform.position + Vector3.up;
+        rb = GetComponent<Rigidbody>();
+        thirdPersonController = GetComponent<vThirdPersonController>();
+        playerControllerMotor.OnLandedGround += Player_OnLandedGround;
+    }
+
+    private void Player_OnLandedGround(object sender, vThirdPersonMotor.YVelocityEventArgs e)
+    {
+        Debug.Log(e.yVelocity.ToString());
+        CheckFallDamage(e.yVelocity);
     }
 
     private void Update()
@@ -41,12 +59,28 @@ public class Player : MonoBehaviour, IDamageable
         CheckOutOfBounds();
     }
 
+    private void CheckFallDamage(float yVelo)
+    {
+        if (yVelo < minFallDamageVelocity)
+        {
+            Damage(minFallDamage);
+        }
+        else if (yVelo < normalFallDamageVelocity)
+        {
+            Damage(normalFallDamage);
+        }
+        else if (yVelo < maxFallDamageVelocity)
+        {
+            Damage(maxFallDamage);
+        }
+    }
+
     private void CheckOutOfBounds()
     {
         if (transform.position.y < cameraOutOfBoundsY)
         {
             thirdPersonCamera.enabled = false;
-            thirdPersonCamera.transform.LookAt(Player.Instance.transform.position);
+            thirdPersonCamera.transform.LookAt(transform.position);
         }
         if (transform.position.y < outOfBoundsY)
         {
