@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Invector.vCharacterController
 {
@@ -68,6 +70,11 @@ namespace Invector.vCharacterController
         #region Internal Variables
 
         // movement bools
+        public class YVelocityEventArgs : EventArgs
+        {
+            public float yVelocity;
+        }
+        public event EventHandler<YVelocityEventArgs> OnLandedGround;
         internal bool isJumping;
         internal bool isStrafing
         {
@@ -297,7 +304,11 @@ namespace Invector.vCharacterController
             if (groundDistance <= groundMinDistance)
             {
                 if (isGrounded == false)
+                {
                     jumpCount = 0;
+                    Debug.Log("Event passed");
+                    OnLandedGround?.Invoke(this, new YVelocityEventArgs { yVelocity = _rigidbody.velocity.y});
+                }
                 isGrounded = true;
                 
                 if (!isJumping && groundDistance > 0.05f)
