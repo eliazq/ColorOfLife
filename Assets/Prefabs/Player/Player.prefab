@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 4869607969674429373}
   - component: {fileID: 5750091426391555536}
   - component: {fileID: 141329082284717925}
-  - component: {fileID: 2201844187071349603}
   - component: {fileID: 8985489092022199892}
   - component: {fileID: 4461276482172752151}
   - component: {fileID: 3934830128191017062}
@@ -481,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3a0259e7ccb4f42890958aa51c21d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outOfBoundsY: -50
 --- !u!114 &4869607969674429373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,24 +530,6 @@ MonoBehaviour:
   cc: {fileID: 0}
   tpCamera: {fileID: 0}
   cameraMain: {fileID: 0}
---- !u!114 &2201844187071349603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8983597249484240233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c789670a80b704eba4dfebed94a111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  header: 'Full Version Features:'
-  comment: "- Generic Action Interaction System\n- Advanced StepOffset & GroundSnaper\n-
-    Climb Ladder \n- Health & Stamina With UI\n- Footstep System\n- Ragdoll System
-    \n- Slide Slopes\n- Powerful Events\n- Debug Window\n- Crouch\n- Roll\n- And
-    much more..."
-  inEdit: 0
 --- !u!114 &8985489092022199892
 MonoBehaviour:
   m_ObjectHideFlags: 0

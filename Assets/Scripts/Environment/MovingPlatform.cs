@@ -1,17 +1,18 @@
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public float speed = 3.0f;  // The speed of the platform
-    public Transform pointsParent;  // The parent of the points
+    [SerializeField] private float speed = 3.0f;  // The speed of the platform
+    [SerializeField] private Transform pointsParent;  // The parent of the points
 
     private Vector3[] points;  // Array of points to move between
     private int currentPointIndex = 0;  // Index of the current target point
 
     public bool isMoving { get; set; } = true;
-
+    bool isPlayerOn = false;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class MovingPlatform : MonoBehaviour
         {
             // Move the platform towards the current target point in world space
             Vector3 targetPosition = points[currentPointIndex];
-            
+
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
             // Check if the platform has reached the target point
@@ -63,6 +64,7 @@ public class MovingPlatform : MonoBehaviour
                 // Increment the point index and loop back to the start if necessary
                 currentPointIndex = (currentPointIndex + 1) % points.Length;
             }
+
         }
     }
 

@@ -143,6 +143,7 @@ namespace Invector.vCharacterController
         {
             if (Input.GetKeyDown(jumpInput) && JumpConditions())
             {
+                if (!cc.enabled) cc.enabled = true;
                 cc.Jump();
             }
         }
