@@ -11,7 +11,9 @@ public class Player : MonoBehaviour, IDamageable
     #region InspectorVariables
     public int health { get; private set; }
     public int maxHealth { get; private set; } = 100;
+    [SerializeField] private vThirdPersonCamera thirdPersonCamera;
     [SerializeField] private float outOfBoundsY = -50f;
+    [SerializeField] private float cameraOutOfBoundsY = -5f;
     #endregion
 
     #region Events
@@ -41,9 +43,15 @@ public class Player : MonoBehaviour, IDamageable
 
     private void CheckOutOfBounds()
     {
+        if (transform.position.y < cameraOutOfBoundsY)
+        {
+            thirdPersonCamera.enabled = false;
+            thirdPersonCamera.transform.LookAt(Player.Instance.transform.position);
+        }
         if (transform.position.y < outOfBoundsY)
         {
             transform.position = spawnPosition;
+            thirdPersonCamera.enabled = true;
         }
     }
 

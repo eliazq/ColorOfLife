@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: -203655887218126122, guid: 7a130e3a4d40d1445ba8f4b29e9c57da, type: 3}
-  m_Position: {x: 0, y: 0, z: 0}
+  m_Position: {x: -0.3, y: -1.49, z: 0}
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -421,8 +421,8 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 1.1166666666666671
     m_Asset: {fileID: 5175646697019807334}
-    m_Duration: 9.666666666666666
-    m_TimeScale: 0.5534482758620693
+    m_Duration: 6.5
+    m_TimeScale: 0.8230769230769243
     m_ParentTrack: {fileID: 6093221196707027915}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
