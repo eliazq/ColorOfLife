@@ -5,21 +5,17 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public float speed = 3.0f;  // The speed of the platform
-    public Transform pointsParent;  // The parent of the points
+    [SerializeField] private float speed = 3.0f;  // The speed of the platform
+    [SerializeField] private Transform pointsParent;  // The parent of the points
 
     private Vector3[] points;  // Array of points to move between
     private int currentPointIndex = 0;  // Index of the current target point
 
-    Rigidbody rb;
-
     public bool isMoving { get; set; } = true;
     bool isPlayerOn = false;
-    Player player;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         // Ensure pointsParent is assigned
         if (pointsParent != null)
         {
@@ -69,31 +65,6 @@ public class MovingPlatform : MonoBehaviour
                 currentPointIndex = (currentPointIndex + 1) % points.Length;
             }
 
-            if (isPlayerOn)
-            {
-                player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
-            }
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.GetComponent<Player>() != null)
-        {
-            isPlayerOn = true;
-            if (player == null)
-                player = collision.collider.GetComponent<Player>();
-            player.GetComponent<vThirdPersonController>().enabled = false;
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.GetComponent<Player>() != null)
-        {
-            isPlayerOn = false;
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 
