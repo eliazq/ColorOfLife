@@ -306,7 +306,6 @@ namespace Invector.vCharacterController
                 if (isGrounded == false)
                 {
                     jumpCount = 0;
-                    Debug.Log("Event passed");
                     OnLandedGround?.Invoke(this, new YVelocityEventArgs { yVelocity = _rigidbody.velocity.y});
                 }
                 isGrounded = true;
