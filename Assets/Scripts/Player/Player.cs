@@ -50,7 +50,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Player_OnLandedGround(object sender, vThirdPersonMotor.YVelocityEventArgs e)
     {
-        Debug.Log(e.yVelocity.ToString());
+        Debug.Log(e.yVelocity);
         CheckFallDamage(e.yVelocity);
     }
 
@@ -71,6 +71,10 @@ public class Player : MonoBehaviour, IDamageable
         }
         else if (yVelo < maxFallDamageVelocity)
         {
+            Damage(maxFallDamage);
+        }
+        else if (yVelo == 0 || yVelo < 0.001f && yVelo > 0f)
+        { // When it drops from big heights. It's a bug kinda, i dont wanna deal with it so i found this easy fix
             Damage(maxFallDamage);
         }
     }
