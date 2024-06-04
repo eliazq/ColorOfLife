@@ -12,8 +12,7 @@ public class MovingPlatform : MonoBehaviour
     private int currentPointIndex = 0;  // Index of the current target point
 
     public bool isMoving { get; set; } = true;
-    bool isPlayerOn = false;
-
+    
     void Start()
     {
         // Ensure pointsParent is assigned

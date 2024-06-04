@@ -50,7 +50,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Player_OnLandedGround(object sender, vThirdPersonMotor.YVelocityEventArgs e)
     {
-        Debug.Log(e.yVelocity);
         CheckFallDamage(e.yVelocity);
     }
 
