@@ -30,8 +30,9 @@ public class Player : MonoBehaviour, IDamageable
     public event EventHandler OnDamageTaken;
     #endregion
 
-    Vector3 spawnPosition;
+    public Vector3 spawnPosition { get; set; }
 
+    bool canFallDamage = true;
     private void Awake()
     {
         if (Instance == null)
@@ -60,6 +61,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private void CheckFallDamage(float yVelo)
     {
+        if (!canFallDamage) return;
+
         if (yVelo < minFallDamageVelocity)
         {
             Damage(minFallDamage);
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour, IDamageable
         }
         if (transform.position.y < outOfBoundsY)
         {
-            transform.position = spawnPosition;
+            Respawn(false);
             thirdPersonCamera.enabled = true;
         }
     }
@@ -116,9 +119,32 @@ public class Player : MonoBehaviour, IDamageable
             OnDead?.Invoke(this, EventArgs.Empty);
         }
     }
+    [NaughtyAttributes.Button]
+    public void Respawn(bool healthBack = true)
+    {
+        enabled = true;
+        thirdPersonCamera.enabled = true;
+        GetComponent<vThirdPersonInput>().enabled = true;
+        transform.position = spawnPosition;
+        health = maxHealth;
+        StartFallDamageCooldown();
+    }
     private void Die()
     {
-        Debug.Log("Player Died");
         enabled = false;
+        thirdPersonCamera.enabled = false;
+        GetComponent<vThirdPersonInput>().enabled = false;
+    }
+
+    private void StartFallDamageCooldown(float cooldown = 0.3f)
+    {
+        StartCoroutine(FallDamageCooldown(cooldown));
+    }
+
+    IEnumerator FallDamageCooldown(float cooldownLenght)
+    {
+        canFallDamage = false;
+        yield return new WaitForSeconds(cooldownLenght);
+        canFallDamage = true;
     }
 }
