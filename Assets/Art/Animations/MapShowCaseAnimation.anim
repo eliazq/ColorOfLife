@@ -234,7 +234,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 50.033333
+    m_StopTime: 51.866665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -874,4 +874,12 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 51.866665
+    functionName: ShowCaseEnded
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: f645ff7a8f3e98b4bbbbe4af7c5554ba,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

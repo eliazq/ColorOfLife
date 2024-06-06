@@ -46,7 +46,11 @@ public class SoundManager : MonoBehaviour
     public enum Sound
     {
         TestSound,
-        MaxPlayable,
+        WalkSound,
+        RunningSound,
+        OrbCollectSound,
+        JumpSound,
+        LandedSound,
         // Add more sounds here
     }
 
@@ -162,7 +166,7 @@ public class SoundManager : MonoBehaviour
             Initialize(); // Ensure the dictionary is initialized
         }
 
-        if (soundTimerDictionary.ContainsKey(sound) && sound == Sound.MaxPlayable)
+        if (soundTimerDictionary.ContainsKey(sound) && sound == Sound.WalkSound)
         {
             float lastTimePlayed = soundTimerDictionary[sound];
             float cooldownTime = 0.15f; // Adjust this value as needed

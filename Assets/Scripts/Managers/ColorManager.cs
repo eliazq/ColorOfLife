@@ -20,6 +20,8 @@ public class ColorManager : MonoBehaviour
     }
     private void Start()
     {
+        if (volumeProfile == null) volumeProfile = FindObjectOfType<Volume>().profile;
+
         volumeProfile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjustments);
         this.colorAdjustment = colorAdjustments;
     }

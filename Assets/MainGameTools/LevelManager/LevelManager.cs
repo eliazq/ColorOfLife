@@ -56,7 +56,6 @@ public class LevelManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
             Initialize();
         }
         else
@@ -72,6 +71,11 @@ public class LevelManager : MonoBehaviour
         {
             levelNameDictionary[levelInfo.level] = levelInfo.sceneName;
         }
+    }
+
+    public void LoadLevel(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     public static void LoadLevel(Level level)

@@ -15,3 +15,13 @@ MonoBehaviour:
   soundAudioClips:
   - sound: 0
     audioClip: {fileID: 8300000, guid: bdaffe6740897dc43a9ccc8b4acc5f6f, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: bdaffe6740897dc43a9ccc8b4acc5f6f, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: bdaffe6740897dc43a9ccc8b4acc5f6f, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: bdaffe6740897dc43a9ccc8b4acc5f6f, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: bdaffe6740897dc43a9ccc8b4acc5f6f, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: bdaffe6740897dc43a9ccc8b4acc5f6f, type: 3}

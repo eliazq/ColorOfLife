@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     #region Events
     public event EventHandler OnDead;
     public event EventHandler OnDamageTaken;
+    public event EventHandler OnDamageGiven;
     #endregion
 
     public Vector3 spawnPosition { get; set; }
@@ -127,6 +128,7 @@ public class Player : MonoBehaviour, IDamageable
         GetComponent<vThirdPersonInput>().enabled = true;
         transform.position = spawnPosition;
         health = maxHealth;
+        OnDamageGiven?.Invoke(this, EventArgs.Empty);
         StartFallDamageCooldown();
     }
     private void Die()
@@ -134,6 +136,13 @@ public class Player : MonoBehaviour, IDamageable
         enabled = false;
         thirdPersonCamera.enabled = false;
         GetComponent<vThirdPersonInput>().enabled = false;
+        StartCoroutine(RespawnAfterDying());
+    }
+    
+    IEnumerator RespawnAfterDying()
+    {
+        yield return new WaitForSeconds(1f);
+        Respawn();
     }
 
     private void StartFallDamageCooldown(float cooldown = 0.3f)

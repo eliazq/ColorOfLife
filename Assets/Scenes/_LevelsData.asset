@@ -15,9 +15,5 @@ MonoBehaviour:
   levels:
   - level: 0
     sceneName: MainMenu
-  - level: 1
-    sceneName: StartCutscene
   - level: 2
     sceneName: ChineseMountains
-  - level: 3
-    sceneName: DevelopmentScene

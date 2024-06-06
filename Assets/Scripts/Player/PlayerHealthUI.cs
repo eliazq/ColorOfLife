@@ -16,6 +16,13 @@ public class PlayerHealthUI : MonoBehaviour
         iconSprite = iconImage.sprite;
         Player.Instance.OnDamageTaken += Instance_OnDamageTaken;
         Player.Instance.OnDead += Instance_OnDead;
+        Player.Instance.OnDamageGiven += Instance_OnDamageGiven;
+    }
+
+    private void Instance_OnDamageGiven(object sender, System.EventArgs e)
+    {
+        UpdateUI();
+        iconImage.sprite = iconSprite;
     }
 
     private void Instance_OnDead(object sender, System.EventArgs e)

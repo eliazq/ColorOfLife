@@ -19483,6 +19483,8 @@ GameObject:
   - component: {fileID: 9140827828964444568}
   - component: {fileID: 289393978587682698}
   - component: {fileID: 7411052681130409711}
+  - component: {fileID: 9012531664197427415}
+  - component: {fileID: 5641186734407944548}
   m_Layer: 0
   m_Name: Rainbow Orb 1
   m_TagString: Untagged
@@ -24329,6 +24331,39 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!65 &9012531664197427415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500963833269304291}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.016345, y: 1.2273717, z: 0.9952431}
+  m_Center: {x: 0.010551453, y: 0.021102667, z: 0.04220581}
+--- !u!114 &5641186734407944548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500963833269304291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1151159221c11d84b96669d574dab2ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7732795874165456892
 GameObject:
   m_ObjectHideFlags: 0
