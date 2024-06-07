@@ -39,10 +39,10 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _AtmosphereThickness: 1
-    - _Exposure: 1.26
+    - _AtmosphereThickness: 0.93
+    - _Exposure: 1.19
     - _SunDisk: 2
-    - _SunSize: 0.03
+    - _SunSize: 0
     - _SunSizeConvergence: 9.93
     m_Colors:
     - _GroundColor: {r: 0.50847304, g: 0.29521182, b: 0.5849056, a: 1}
