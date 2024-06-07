@@ -20,11 +20,11 @@ public class LevelManager : MonoBehaviour
                 {
                     if (_instance == null)
                     {
-                        LevelManager prefab = Resources.Load<LevelManager>("MainGameTools");
+                        LevelManager prefab = Resources.Load<LevelManager>("LevelManager");
 
                         if (prefab == null)
                         {
-                            Debug.LogError("MainGameTools prefab not found in Resources!");
+                            Debug.LogError("LevelManager prefab not found in Resources!");
                         }
                         else
                         {

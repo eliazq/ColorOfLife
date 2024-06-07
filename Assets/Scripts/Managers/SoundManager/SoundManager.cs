@@ -1,10 +1,23 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
+    //  !  ALL  GAME  SOUNDS  HERE  !
+    public enum Sound
+    {
+        Test,
+        OrbCollect,
+        Jump,
+        Walk,
+        Run,
+        // Add more sounds here
+    }
     private static SoundManager _instance;
     private static readonly object _lock = new object();
+
+    [SerializeField] private string audioMixerGroup = "Master";
 
     public static SoundManager Instance
     {
@@ -16,11 +29,11 @@ public class SoundManager : MonoBehaviour
                 {
                     if (_instance == null)
                     {
-                        SoundManager prefab = Resources.Load<SoundManager>("MainGameTools");
+                        SoundManager prefab = Resources.Load<SoundManager>("SoundManager");
 
                         if (prefab == null)
                         {
-                            Debug.LogError("MainGameTools prefab not found in Resources!");
+                            Debug.LogError("SoundManager prefab not found in Resources!");
                         }
                         else
                         {
@@ -43,20 +56,10 @@ public class SoundManager : MonoBehaviour
 
     public SoundClipsSO soundAudioClipsSO;
 
-    public enum Sound
-    {
-        TestSound,
-        WalkSound,
-        RunningSound,
-        OrbCollectSound,
-        JumpSound,
-        LandedSound,
-        // Add more sounds here
-    }
-
     private static Dictionary<Sound, float> soundTimerDictionary;
     private static GameObject oneShotGameObject;
     private static AudioSource oneShotAudioSource;
+    [SerializeField] private AudioMixer audioMixer;
 
     private void Awake()
     {
@@ -83,93 +86,98 @@ public class SoundManager : MonoBehaviour
 
     public static void PlaySound(Sound sound, Vector3 position)
     {
-        // Debug.Log($"Attempting to play sound: {sound} at position: {position}");
-        if (CanPlaySound(sound))
+        if (oneShotGameObject == null)
         {
-            AudioClip audioClip = GetAudioClip(sound);
-            if (audioClip != null)
-            {
-                // Debug.Log($"Playing sound: {sound} at position: {position}");
-                AudioSource.PlayClipAtPoint(audioClip, position, 1f);
-            }
-            else
-            {
-                Debug.LogError($"AudioClip for sound: {sound} is null");
-            }
+            oneShotGameObject = new GameObject("One Shot Sound");
+            oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+            oneShotAudioSource.outputAudioMixerGroup = Instance.audioMixer.outputAudioMixerGroup;
+            DontDestroyOnLoad(oneShotGameObject);
+        }
+        AudioClip audioClip = GetAudioClip(sound);
+        if (audioClip != null)
+        {
+            // Debug.Log($"Playing sound: {sound} as one-shot");
+            oneShotAudioSource.gameObject.transform.position = position;
+            oneShotAudioSource.spatialBlend = 1f; // 3d sound
+            oneShotAudioSource.PlayOneShot(audioClip);
+            oneShotAudioSource.spatialBlend = 0f;
         }
         else
         {
-            // Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
+            Debug.LogError($"AudioClip for sound: {sound} is null");
         }
     }
 
     public static void PlaySound(Sound sound)
     {
-        // Debug.Log($"Attempting to play sound: {sound} as one-shot");
-        if (CanPlaySound(sound))
+        if (oneShotGameObject == null)
         {
-            if (oneShotGameObject == null)
+            oneShotGameObject = new GameObject("One Shot Sound");
+            oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+            // Get the AudioMixerGroup
+            AudioMixerGroup[] audioMixerGroups = Instance.audioMixer.FindMatchingGroups(Instance.audioMixerGroup);
+            if (audioMixerGroups.Length > 0)
             {
-                oneShotGameObject = new GameObject("One Shot Sound");
-                oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-                DontDestroyOnLoad(oneShotGameObject);
-            }
-            AudioClip audioClip = GetAudioClip(sound);
-            if (audioClip != null)
-            {
-                // Debug.Log($"Playing sound: {sound} as one-shot");
-                oneShotAudioSource.PlayOneShot(audioClip);
+                oneShotAudioSource.outputAudioMixerGroup = audioMixerGroups[0];
             }
             else
             {
-                Debug.LogError($"AudioClip for sound: {sound} is null");
+                Debug.LogError("AudioMixerGroup not found");
             }
+            DontDestroyOnLoad(oneShotGameObject);
+        }
+        AudioClip audioClip = GetAudioClip(sound);
+        if (audioClip != null)
+        {
+            // Debug.Log($"Playing sound: {sound} as one-shot");
+            oneShotAudioSource.PlayOneShot(audioClip);
         }
         else
         {
-            // Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
-        }
-    }
-    public static void PlaySound(Sound sound, float volume)
-    {
-        // Debug.Log($"Attempting to play sound: {sound} as one-shot");
-        if (CanPlaySound(sound))
-        {
-            if (oneShotGameObject == null)
-            {
-                oneShotGameObject = new GameObject("One Shot Sound");
-                oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-                oneShotAudioSource.volume = volume;
-                DontDestroyOnLoad(oneShotGameObject);
-            }
-            AudioClip audioClip = GetAudioClip(sound);
-            if (audioClip != null)
-            {
-                // Debug.Log($"Playing sound: {sound} as one-shot");
-                oneShotAudioSource.PlayOneShot(audioClip);
-            }
-            else
-            {
-                Debug.LogError($"AudioClip for sound: {sound} is null");
-            }
-        }
-        else
-        {
-            // Debug.Log($"Cannot play sound: {sound} due to timing restrictions");
+            Debug.LogError($"AudioClip for sound: {sound} is null");
         }
     }
 
-    private static bool CanPlaySound(Sound sound)
+    public static void PlaySound(Sound sound, float volume)
+    {
+        if (oneShotGameObject == null)
+        {
+            oneShotGameObject = new GameObject("One Shot Sound");
+            oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+            oneShotAudioSource.volume = volume;
+            DontDestroyOnLoad(oneShotGameObject);
+        }
+        AudioClip audioClip = GetAudioClip(sound);
+        if (audioClip != null)
+        {
+            // Debug.Log($"Playing sound: {sound} as one-shot");
+            oneShotAudioSource.PlayOneShot(audioClip, volume);
+        }
+        else
+        {
+            Debug.LogError($"AudioClip for sound: {sound} is null");
+        }
+    }
+
+    public static void PlaySoundWithCooldown(Sound sound, float cooldown)
+    {
+        if (CanPlaySound(sound, cooldown))
+        {
+            PlaySound(sound);
+        }
+    }
+
+    private static bool CanPlaySound(Sound sound, float cooldown)
     {
         if (soundTimerDictionary == null)
         {
             Initialize(); // Ensure the dictionary is initialized
         }
 
-        if (soundTimerDictionary.ContainsKey(sound) && sound == Sound.WalkSound)
+        if (soundTimerDictionary.ContainsKey(sound))
         {
             float lastTimePlayed = soundTimerDictionary[sound];
-            float cooldownTime = 0.15f; // Adjust this value as needed
+            float cooldownTime = cooldown; // Adjust this value as needed
             float timeSinceLastPlayed = Time.time - lastTimePlayed;
             // Debug.Log($"Time since last played {sound}: {timeSinceLastPlayed}s, Cooldown time: {cooldownTime}s");
 
