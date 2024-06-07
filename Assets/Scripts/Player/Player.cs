@@ -16,9 +16,9 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private vThirdPersonMotor playerControllerMotor;
     [SerializeField] private float outOfBoundsY = -50f;
     [SerializeField] private float cameraOutOfBoundsY = -5f;
-    [SerializeField] private float minFallDamageVelocity = -50;
-    [SerializeField] private float normalFallDamageVelocity = -100;
-    [SerializeField] private float maxFallDamageVelocity = -200;
+    [SerializeField] private float minFallDamageVelocity = -15;
+    [SerializeField] private float normalFallDamageVelocity = -20;
+    [SerializeField] private float maxFallDamageVelocity = -30;
     private int minFallDamage = 25;
     private int normalFallDamage = 55;
     private int maxFallDamage = 100;
