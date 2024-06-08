@@ -10,6 +10,7 @@ public class CheckPoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Player.Instance.spawnPosition = transform.position;
+        Player.Instance.transform.rotation = Quaternion.identity;
         notCollected.SetActive(false);
         collected.SetActive(true);
         SoundManager.PlaySound(SoundManager.Sound.CheckPoint);

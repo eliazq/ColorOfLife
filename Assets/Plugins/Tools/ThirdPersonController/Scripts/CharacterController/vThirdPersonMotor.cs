@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -295,7 +296,13 @@ namespace Invector.vCharacterController
         #endregion
 
         #region Ground Check                
+        bool cooldown = true;
 
+        IEnumerator CooldownCounter()
+        {
+            yield return new WaitForSeconds(0.3f);
+            cooldown = true;
+        }
         protected virtual void CheckGround()
         {
             CheckGroundDistance();
@@ -306,7 +313,13 @@ namespace Invector.vCharacterController
                 if (isGrounded == false)
                 {
                     jumpCount = 0;
-                    OnLandedGround?.Invoke(this, new YVelocityEventArgs { yVelocity = _rigidbody.velocity.y});
+                    if (cooldown)
+                    {
+                        cooldown = false;
+                        OnLandedGround?.Invoke(this, new YVelocityEventArgs { yVelocity = _rigidbody.velocity.y });
+                        StartCoroutine(CooldownCounter());
+                    }
+                    isGrounded = true;
                 }
                 isGrounded = true;
                 

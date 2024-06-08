@@ -8,12 +8,15 @@ public class Player : MonoBehaviour, IDamageable
 {
     public static Player Instance;
 
+    [SerializeField] private GameObject playerVisual;
+
     #region InspectorVariables
     public int health { get; private set; }
     public int maxHealth { get; private set; } = 100;
     [SerializeField] private vThirdPersonCamera thirdPersonCamera;
     private vThirdPersonController thirdPersonController;
     [SerializeField] private vThirdPersonMotor playerControllerMotor;
+    private vThirdPersonInput thirdPersonInput;
     [SerializeField] private float outOfBoundsY = -50f;
     [SerializeField] private float cameraOutOfBoundsY = -5f;
     [SerializeField] private float minFallDamageVelocity = -15;
@@ -22,7 +25,9 @@ public class Player : MonoBehaviour, IDamageable
     private int minFallDamage = 25;
     private int normalFallDamage = 55;
     private int maxFallDamage = 100;
+    bool isInvincible = false;
     Rigidbody rb;
+    bool hasRespawned;
     #endregion
 
     #region Events
@@ -47,7 +52,9 @@ public class Player : MonoBehaviour, IDamageable
         spawnPosition = transform.position + Vector3.up;
         rb = GetComponent<Rigidbody>();
         thirdPersonController = GetComponent<vThirdPersonController>();
+        thirdPersonInput = GetComponent<vThirdPersonInput>();
         playerControllerMotor.OnLandedGround += Player_OnLandedGround;
+        Respawn();
     }
 
     private void Player_OnLandedGround(object sender, vThirdPersonMotor.YVelocityEventArgs e)
@@ -91,13 +98,22 @@ public class Player : MonoBehaviour, IDamageable
         }
         if (transform.position.y < outOfBoundsY)
         {
-            Respawn(false);
+            isInvincible = true;
+            StartCoroutine(LoseInvinsible());
+            Respawn(true);
             thirdPersonCamera.enabled = true;
         }
     }
 
+    IEnumerator LoseInvinsible()
+    {
+        yield return new WaitForSeconds(5f);
+        isInvincible = false;
+    }
+
     public void Damage(int damage)
     {
+        if (isInvincible) return;
         health -= damage;
         OnDamageTaken?.Invoke(this, EventArgs.Empty);
         if (health <= 0)
@@ -125,12 +141,39 @@ public class Player : MonoBehaviour, IDamageable
     {
         enabled = true;
         thirdPersonCamera.enabled = true;
-        GetComponent<vThirdPersonInput>().enabled = true;
-        transform.position = spawnPosition;
+        transform.position = spawnPosition + Vector3.up;
         health = maxHealth;
+        transform.position += Vector3.up;
         OnDamageGiven?.Invoke(this, EventArgs.Empty);
+        hasRespawned = true;
         StartFallDamageCooldown();
+        StartCoroutine(CooldownController());
     }
+    float maxCounter = 1.3f;
+    float counter = 0;
+    IEnumerator CooldownController()
+    {
+        while (true)
+        {
+            playerVisual.SetActive(false);
+            transform.position = spawnPosition;
+            rb.velocity = Vector3.zero;
+            thirdPersonInput.enabled = false;
+            thirdPersonController.enabled = false;
+            counter += Time.deltaTime;
+            if (counter >= maxCounter)
+            {
+                counter = 0;
+                thirdPersonInput.enabled = true;
+                thirdPersonController.enabled = true;
+                playerVisual.SetActive(true);
+                break;
+            }
+            yield return null;
+        }
+
+    }
+    
     private void Die()
     {
         enabled = false;
