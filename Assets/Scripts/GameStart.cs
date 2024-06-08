@@ -5,15 +5,8 @@ using UnityEngine.Playables;
 
 public class GameStart : MonoBehaviour
 {
-    Animator animator;
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    public void ShowCaseEnded()
-    {
-        gameObject.SetActive(false);
+    private void Start(){
+        GlobalVolumeManager.Instance.ChangeSaturation(-100);
     }
 }
