@@ -107,4 +107,9 @@ public class LevelManager : MonoBehaviour
         }
         return false;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
