@@ -8,11 +8,15 @@ public class SoundManager : MonoBehaviour
     public enum Sound
     {
         Test,
+        OrbAmbience,
         OrbCollect,
         Jump,
         Walk,
         Run,
         CheckPoint,
+        CheckPointAmbience,
+        MainMusic,
+
         // Add more sounds here
     }
     private static SoundManager _instance;

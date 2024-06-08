@@ -9,7 +9,7 @@ public class ColorOrb : MonoBehaviour
     {
         if (other.GetComponent<Player>() != null)
         {
-            SoundManager.PlaySound(SoundManager.Sound.OrbCollect, transform.position);
+            SoundManager.PlaySound(SoundManager.Sound.OrbCollect,0.5f );
             ColorManager.Instance.AddColor();
             Destroy(gameObject);
         }
