@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
         Jump,
         Walk,
         Run,
+        CheckPoint,
         // Add more sounds here
     }
     private static SoundManager _instance;

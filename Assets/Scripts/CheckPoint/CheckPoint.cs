@@ -6,14 +6,12 @@ public class CheckPoint : MonoBehaviour
 {
     [SerializeField] private GameObject notCollected;
     [SerializeField] private GameObject collected;
-    [SerializeField] private AudioSource CheckpointClip;
 
     private void OnTriggerEnter(Collider other)
     {
         Player.Instance.spawnPosition = transform.position;
         notCollected.SetActive(false);
         collected.SetActive(true);
-        CheckpointClip.Play();
-
+        SoundManager.PlaySound(SoundManager.Sound.CheckPoint);
     }
 }
