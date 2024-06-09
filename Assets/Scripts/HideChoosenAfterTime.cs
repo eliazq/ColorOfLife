@@ -6,6 +6,7 @@ public class HideChoosenAfterTime : MonoBehaviour
 {
     [SerializeField] private GameObject choosenObject;
     [SerializeField] private float time = 8f;
+    [SerializeField] private bool onlyHide = false;
     void Start()
     {
         StartCoroutine(HideAfterTimeCoroutine());
@@ -14,7 +15,8 @@ public class HideChoosenAfterTime : MonoBehaviour
     IEnumerator HideAfterTimeCoroutine()
     {
         yield return new WaitForSeconds(time);
-        StartCoroutine(ShowAfterTime());
+        if (!onlyHide)
+            StartCoroutine(ShowAfterTime());
         choosenObject.SetActive(false);
     }
 

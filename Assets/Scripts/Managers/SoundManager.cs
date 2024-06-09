@@ -171,11 +171,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public static void PlaySoundWithCooldown(Sound sound, float cooldown)
+    public static void PlaySoundWithCooldown(Sound sound, float cooldown, float volume = 1f)
     {
         if (CanPlaySound(sound, cooldown))
         {
-            PlaySound(sound);
+            PlaySound(sound, volume);
         }
     }
 

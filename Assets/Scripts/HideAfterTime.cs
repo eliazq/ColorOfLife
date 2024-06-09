@@ -5,6 +5,7 @@ using UnityEngine;
 public class HideAfterTime : MonoBehaviour
 {
     [SerializeField] private float time = 8f;
+    [SerializeField] private bool showAfterTime = true;
     void Start()
     {
         StartCoroutine(HideAfterTimeCoroutine());
@@ -13,7 +14,8 @@ public class HideAfterTime : MonoBehaviour
     IEnumerator HideAfterTimeCoroutine()
     {
         yield return new WaitForSeconds(time);
-        StartCoroutine(ShowAfterTime());
+        if (showAfterTime)
+            StartCoroutine(ShowAfterTime());
         gameObject.SetActive(false);
     }
 

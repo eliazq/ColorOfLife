@@ -102,13 +102,13 @@ public class Player : MonoBehaviour, IDamageable
         {
             SoundManager.Sound[] soundList = new SoundManager.Sound[] { SoundManager.Sound.Step1, SoundManager.Sound.Step2, SoundManager.Sound.Step3, };
             int ranNum = UnityEngine.Random.Range(0, soundList.Length);
-            SoundManager.PlaySoundWithCooldown(soundList[ranNum], 0.38f);
+            SoundManager.PlaySoundWithCooldown(soundList[ranNum], 0.38f, .4f);
         }
         else if (rb.velocity.magnitude > 5f && playerControllerMotor.isGrounded)
         {
             SoundManager.Sound[] soundList = new SoundManager.Sound[] { SoundManager.Sound.Step1, SoundManager.Sound.Step2, SoundManager.Sound.Step3, };
             int ranNum = UnityEngine.Random.Range(0, soundList.Length);
-            SoundManager.PlaySoundWithCooldown(soundList[ranNum], 0.3f);
+            SoundManager.PlaySoundWithCooldown(soundList[ranNum], 0.3f, .4f);
         }
         
     }
