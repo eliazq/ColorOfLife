@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
         CheckPoint,
         CheckPointAmbience,
         MainMusic,
+        FallingRock,
 
         // Add more sounds here
     }

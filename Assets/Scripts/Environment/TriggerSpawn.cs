@@ -14,10 +14,12 @@ public class TriggerSpawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.GetComponent<Player>() != null)
         {
             GameObject spawnedObj = Instantiate(prefabToSpawn, spawnTransform.position, Quaternion.identity);
             Destroy(spawnedObj, 8f);
+            SoundManager.PlaySound(SoundManager.Sound.FallingRock);
         }
     }
 
