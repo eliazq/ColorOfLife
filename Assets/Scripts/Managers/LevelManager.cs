@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public enum Level
+    {
+        MainMenu,
+        ChineseMountain,
+        ThankYou,
+        // Add more levels here
+    }
     private static LevelManager _instance;
     private static readonly object _lock = new object();
 
     Scene previousScene;
 
-    public static LevelManager Instance
+    private static LevelManager Instance
     {
         get
         {
@@ -38,14 +45,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public enum Level
-    {
-        MainMenu,
-        StartCutScene,
-        ChineseMountain,
-        Development,
-        // Add more levels here
-    }
+    
 
     public LevelData levelData;
 

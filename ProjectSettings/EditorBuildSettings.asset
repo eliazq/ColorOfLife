@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0467a408311caad4ba57f4f3a958b640
+  - enabled: 1
+    path: Assets/Scenes/ChineseMountains.unity
+    guid: 3752cc526116a284785fb652f5c63014
+  - enabled: 1
+    path: Assets/Scenes/ThankYouScene.unity
+    guid: 88a7c5f4b490e034788b727abb74e1aa
   m_configObjects: {}

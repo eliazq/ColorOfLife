@@ -15,5 +15,7 @@ MonoBehaviour:
   levels:
   - level: 0
     sceneName: MainMenu
-  - level: 2
+  - level: 1
     sceneName: ChineseMountains
+  - level: 2
+    sceneName: ThankYouScene
