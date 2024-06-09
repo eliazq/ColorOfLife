@@ -3,12 +3,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
     public static Player Instance;
 
     [SerializeField] private GameObject playerVisual;
+
+    [SerializeField] private Image[] liveImages = new Image[3];
 
     public event EventHandler OnPlayerLivesDead;
 
@@ -144,6 +147,7 @@ public class Player : MonoBehaviour, IDamageable
     public void Respawn(bool healthBack = true)
     {
         lives--;
+        liveImages[lives].color = Color.white;
         enabled = true;
         thirdPersonCamera.enabled = true;
         transform.position = spawnPosition + Vector3.up;
@@ -185,6 +189,10 @@ public class Player : MonoBehaviour, IDamageable
         spawnPosition = GameStartPosition + Vector3.up;
         lives = 3;
         OnPlayerLivesDead?.Invoke(this, EventArgs.Empty);
+        foreach(Image image in liveImages)
+        {
+            image.color = Color.red;
+        }
     }
     
     private void Die()
