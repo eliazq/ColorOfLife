@@ -15,6 +15,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public event EventHandler OnPlayerLivesDead;
 
+    [SerializeField] private GameObject landingParticlePrefab;
+    [SerializeField] private LayerMask impactLayer;
+
     #region InspectorVariables
     public int health { get; private set; }
     public int maxHealth { get; private set; } = 100;
@@ -45,6 +48,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public Vector3 spawnPosition { get; set; }
 
+    bool landingParticleCooldown = false;
+
     bool canFallDamage = true;
     private void Awake()
     {
@@ -67,11 +72,45 @@ public class Player : MonoBehaviour, IDamageable
     private void Player_OnLandedGround(object sender, vThirdPersonMotor.YVelocityEventArgs e)
     {
         CheckFallDamage(e.yVelocity);
+        TryCreateLandingParticle();
+    }
+
+    private void TryCreateLandingParticle()
+    {
+        Debug.Log("Landed + " + " cooldown: " + landingParticleCooldown);
+        if (landingParticleCooldown) return;
+
+        if (Physics.CheckSphere(transform.position, .3f, impactLayer))
+        {
+            GameObject landParticle = Instantiate(landingParticlePrefab, transform.position, landingParticlePrefab.transform.rotation);
+            Debug.Log("Spawn");
+            StartCoroutine(LandingParticleCalCooldown());
+        }
+    }
+
+    IEnumerator LandingParticleCalCooldown()
+    {
+        landingParticleCooldown = true;
+        yield return new WaitForSeconds(0.3f);
+        landingParticleCooldown = false;
     }
 
     private void Update()
     {
         CheckOutOfBounds();
+        if (rb.velocity.magnitude > 3f && rb.velocity.magnitude < 5f && playerControllerMotor.isGrounded)
+        {
+            SoundManager.Sound[] soundList = new SoundManager.Sound[] { SoundManager.Sound.Step1, SoundManager.Sound.Step2, SoundManager.Sound.Step3, };
+            int ranNum = UnityEngine.Random.Range(0, soundList.Length);
+            SoundManager.PlaySoundWithCooldown(soundList[ranNum], 0.38f);
+        }
+        else if (rb.velocity.magnitude > 5f && playerControllerMotor.isGrounded)
+        {
+            SoundManager.Sound[] soundList = new SoundManager.Sound[] { SoundManager.Sound.Step1, SoundManager.Sound.Step2, SoundManager.Sound.Step3, };
+            int ranNum = UnityEngine.Random.Range(0, soundList.Length);
+            SoundManager.PlaySoundWithCooldown(soundList[ranNum], 0.3f);
+        }
+        
     }
 
     private void CheckFallDamage(float yVelo)

@@ -90,7 +90,7 @@ namespace Invector.vCharacterController
         }
         internal int jumpCount;
         internal int maxJumps = 2;
-        internal bool isGrounded { get; set; }
+        public bool isGrounded { get; set; }
         internal bool isSprinting { get; set; }
         public bool stopMove { get; protected set; }
         internal float inputMagnitude;                      // sets the inputMagnitude to update the animations in the animator controller

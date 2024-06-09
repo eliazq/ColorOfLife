@@ -17,6 +17,12 @@ public class SoundManager : MonoBehaviour
         CheckPointAmbience,
         MainMusic,
         FallingRock,
+        LandToGround1,
+        LandToGround2,
+        LandToGround3,
+        Step1,
+        Step2,
+        Step3,
 
         // Add more sounds here
     }
