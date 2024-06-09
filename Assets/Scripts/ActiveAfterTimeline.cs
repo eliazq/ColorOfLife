@@ -19,7 +19,6 @@ public class ActiveAfterTimeline : MonoBehaviour
 
     private void PlayableDir_stopped(PlayableDirector obj)
     {
-        Debug.Log("I set it active here");
         player.SetActive(true);
         player.gameObject.SetActive(true);
     }

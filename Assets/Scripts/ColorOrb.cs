@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorOrb : MonoBehaviour
 {
-    bool hasTriggered = false;
+    public bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,6 +32,6 @@ public class ColorOrb : MonoBehaviour
             }
             yield return null;
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

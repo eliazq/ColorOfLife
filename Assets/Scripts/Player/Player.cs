@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private GameObject playerVisual;
 
+    public event EventHandler OnPlayerLivesDead;
+
     #region InspectorVariables
     public int health { get; private set; }
     public int maxHealth { get; private set; } = 100;
@@ -28,6 +30,8 @@ public class Player : MonoBehaviour, IDamageable
     bool isInvincible = false;
     Rigidbody rb;
     bool hasRespawned;
+    Vector3 GameStartPosition;
+    int lives = 3;
     #endregion
 
     #region Events
@@ -50,6 +54,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         health = maxHealth;
         spawnPosition = transform.position + Vector3.up;
+        GameStartPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         thirdPersonController = GetComponent<vThirdPersonController>();
         thirdPersonInput = GetComponent<vThirdPersonInput>();
@@ -138,9 +143,11 @@ public class Player : MonoBehaviour, IDamageable
     [NaughtyAttributes.Button]
     public void Respawn(bool healthBack = true)
     {
+        lives--;
         enabled = true;
         thirdPersonCamera.enabled = true;
         transform.position = spawnPosition + Vector3.up;
+        if (lives <= 0) LoseGame();
         health = maxHealth;
         transform.position += Vector3.up;
         OnDamageGiven?.Invoke(this, EventArgs.Empty);
@@ -171,6 +178,13 @@ public class Player : MonoBehaviour, IDamageable
             yield return null;
         }
 
+    }
+
+    private void LoseGame()
+    {
+        spawnPosition = GameStartPosition + Vector3.up;
+        lives = 3;
+        OnPlayerLivesDead?.Invoke(this, EventArgs.Empty);
     }
     
     private void Die()
