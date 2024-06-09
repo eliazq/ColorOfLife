@@ -32,6 +32,26 @@ public class GlobalVolumeManager : MonoBehaviour
                 Debug.LogError($"volume {volumeProfile.name} does not have ColorAdjustments Component");
         }
     }
+    float volumeContrast
+    {
+        get
+        {
+            if (volumeProfile.TryGet(out ColorAdjustments colorAdjustments))
+            {
+                return colorAdjustments.contrast.value;
+            }
+            Debug.LogError($"volume {volumeProfile.name} does not have ColorAdjustments Component");
+            return -1f;
+        }
+        set {
+            if (volumeProfile.TryGet(out ColorAdjustments colorAdjustments))
+            {
+                colorAdjustments.contrast.value = value;
+            }
+            else
+                Debug.LogError($"volume {volumeProfile.name} does not have ColorAdjustments Component");
+        }
+    }
 
     private void Awake()
     {
@@ -69,6 +89,25 @@ public class GlobalVolumeManager : MonoBehaviour
         while (volumeSaturation != targetSaturation)
         {
             volumeSaturation = Mathf.MoveTowards(volumeSaturation, targetSaturation, speed * Time.deltaTime);
+            yield return null;
+        }
+
+        IsChangingVolume = false;
+
+    }
+
+    public void ChangeContrast(float targetValue, float speed = 300)
+    {
+        StartCoroutine(ChangeContrastSmooth(targetValue, speed));
+    }
+
+    IEnumerator ChangeContrastSmooth(float targetContrast, float speed)
+    {
+        IsChangingVolume = true;
+
+        while (volumeContrast != targetContrast)
+        {
+            volumeContrast = Mathf.MoveTowards(volumeContrast, targetContrast, speed * Time.deltaTime);
             yield return null;
         }
 
