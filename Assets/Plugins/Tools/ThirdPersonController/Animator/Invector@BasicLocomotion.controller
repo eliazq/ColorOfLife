@@ -30,7 +30,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DoubleJump
-  m_Speed: 1.2
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8857539072094451864}
@@ -43,7 +43,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: d96ac00d4defd8542a2dd49b956a8eb7,
+  m_Motion: {fileID: -203655887218126122, guid: 9f7d2838075a2354b9a19c990bad4f3a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

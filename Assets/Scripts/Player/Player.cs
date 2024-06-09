@@ -70,11 +70,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (!canFallDamage) return;
 
-        if (yVelo < minFallDamageVelocity)
+        if (yVelo < minFallDamageVelocity && yVelo > normalFallDamage)
         {
             Damage(minFallDamage);
         }
-        else if (yVelo < normalFallDamageVelocity)
+        else if (yVelo < normalFallDamageVelocity && yVelo > maxFallDamage)
         {
             Damage(normalFallDamage);
         }
