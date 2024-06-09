@@ -54,7 +54,6 @@ public class Player : MonoBehaviour, IDamageable
         thirdPersonController = GetComponent<vThirdPersonController>();
         thirdPersonInput = GetComponent<vThirdPersonInput>();
         playerControllerMotor.OnLandedGround += Player_OnLandedGround;
-        Respawn();
     }
 
     private void Player_OnLandedGround(object sender, vThirdPersonMotor.YVelocityEventArgs e)
