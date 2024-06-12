@@ -55,14 +55,6 @@ public class OrbManager : MonoBehaviour
 
     private void Instance_OnPlayerLivesDead(object sender, System.EventArgs e)
     {
-        foreach (var obj in orbObjects)
-        {
-            if (!obj.activeSelf)
-            {
-                obj.SetActive(true);
-                obj.GetComponent<ColorOrb>().hasTriggered = false;
-            }
-        }
-        GlobalVolumeManager.Instance.ChangeSaturation(-100, 100);
+        
     }
 }

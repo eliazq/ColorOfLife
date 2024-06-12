@@ -46,7 +46,20 @@ public class Player : MonoBehaviour, IDamageable
     public event EventHandler OnDamageGiven;
     #endregion
 
-    public Vector3 spawnPosition { get; set; }
+    private Vector3 spawnPos;
+    public Vector3 spawnPosition { 
+        get
+        {
+            return spawnPos;
+        }
+        set
+        {
+            if (Vector3.Distance(spawnPos, value) > 5)
+                lastSpawnPosition = spawnPos;
+            spawnPos = value;
+        }
+    }
+    public Vector3 lastSpawnPosition { get; set; }
 
     bool landingParticleCooldown = false;
 
@@ -225,7 +238,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void LoseGame()
     {
-        spawnPosition = GameStartPosition + Vector3.up;
+        spawnPosition = lastSpawnPosition + Vector3.up;
         lives = 3;
         OnPlayerLivesDead?.Invoke(this, EventArgs.Empty);
         foreach(Image image in liveImages)

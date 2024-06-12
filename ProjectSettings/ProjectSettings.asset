@@ -12,9 +12,9 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Polar Games
-  productName: Color Of Life
-  defaultCursor: {fileID: 0}
+  companyName: PolarGames
+  productName: Color Of Life DEMO
+  defaultCursor: {fileID: 2800000, guid: 1976b94738da4f44abe05875253173f6, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -46,7 +46,7 @@ PlayerSettings:
     duration: 2
   - logo: {fileID: 21300000, guid: db8260ae328969e45b1adc0e2f02b57d, type: 3}
     duration: 2
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: d12ef6e03f5f1a24a8fc6aebcbc5e73d,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 32d3ec53dbc457b4791f4a29a20c1d74,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -146,7 +146,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.1.0
+  bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -291,7 +291,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 32d3ec53dbc457b4791f4a29a20c1d74, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: iPhone
     m_Icons:
